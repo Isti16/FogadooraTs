@@ -32,6 +32,8 @@ export default class Content {
 
         const megold: Megoldas = new Megoldas("fogado.txt");
 
+        res.write(`2. feladat: ${megold.bejegyzesekSzama} foglalás adatait tartalmazza a fájl.\n`);
+
         // <---- Fejezd be a kódolást
 
         res.write("</pre></form></body></html>");
