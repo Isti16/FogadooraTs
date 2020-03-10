@@ -32,8 +32,12 @@ export default class Content {
 
         const megold: Megoldas = new Megoldas("fogado.txt");
 
-        res.write(`2. feladat: Foglalások száma: ${megold.bejegyzesekSzama} \n`);
+        res.write("2. feladat\n");
+        res.write(`Foglalások száma: ${megold.bejegyzesekSzama} \n`);
 
+        res.write("3. feladat\n");
+        res.write("Adjon meg egy nevet: ");
+        res.write("<input type='text' >");
         // <---- Fejezd be a kódolást
 
         res.write("</pre></form></body></html>");
