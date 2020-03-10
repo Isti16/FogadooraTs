@@ -32,7 +32,7 @@ export default class Content {
 
         const megold: Megoldas = new Megoldas("fogado.txt");
 
-        res.write(`2. feladat: ${megold.bejegyzesekSzama} foglalás adatait tartalmazza a fájl.\n`);
+        res.write(`2. feladat: Foglalások száma: ${megold.bejegyzesekSzama} \n`);
 
         // <---- Fejezd be a kódolást
 

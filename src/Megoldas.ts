@@ -11,7 +11,7 @@ export default class Megoldás {
     constructor(forras: string) {
         fs.readFileSync(forras)
             .toString()
-            .split(" ")
+            .split("\n")
             .forEach(i => {
                 const adatok = i.trim();
                 if (adatok.length > 0) this._fogadasok.push(new Fogadas(adatok));
