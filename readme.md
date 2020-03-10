@@ -1,4 +1,4 @@
-#  VS Code + TypeScript + Node.js + Jest + GitHub + Heroku
+#  FogadooraTs
 
 ## Heroku teszt:
 https://jedlik-ts-template.herokuapp.com/ (Deploy menete: Deploy_on_Heroku.pdf)
