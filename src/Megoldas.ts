@@ -1,4 +1,5 @@
 import fs from "fs";
+import Fogadas from "./Fogadas";
 
 export default class Megoldás {
     private _fogadasok: Fogadas[] = [];

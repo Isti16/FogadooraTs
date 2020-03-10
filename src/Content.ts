@@ -1,6 +1,8 @@
 ﻿import fs from "fs";
 import http from "http";
 import url from "url";
+import Fogadas from "./Fogadas";
+import Megoldas from "./Megoldas";
 
 interface InputInterface {
     name: string;
