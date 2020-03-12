@@ -32,12 +32,19 @@ export default class Content {
 
         const megold: Megoldas = new Megoldas("fogado.txt");
 
+        //2.
         res.write("2. feladat\n");
         res.write(`Foglalások száma: ${megold.bejegyzesekSzama} \n`);
 
+        //3.
+        const u = url.parse(req.url as string, true).query;
+        const bekertTanar: string = u.fordulo as string;
+        //if (bekertTanar == "") bekertTanar = "";
         res.write("3. feladat\n");
-        res.write("Adjon meg egy nevet: ");
-        res.write("<input type='text' >");
+        res.write(`Adjon meg egy nevet: <input type='text' name='beker' value=${bekertTanar} style='width: 3em'>\n`);
+
+        //4.
+
         // <---- Fejezd be a kódolást
 
         res.write("</pre></form></body></html>");
