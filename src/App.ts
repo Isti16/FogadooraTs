@@ -6,5 +6,4 @@ class Program {
         http.createServer(new Content().content).listen(process.env.PORT || 8080);
     }
 }
-
 new Program();
