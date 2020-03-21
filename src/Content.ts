@@ -17,7 +17,7 @@ export default class Content {
             fs.createReadStream("favicon.ico").pipe(res);
             return;
         }
-        
+
         // Weboldal inicializálása + head rész:
         res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
         res.write("<!DOCTYPE html>");
@@ -43,6 +43,11 @@ export default class Content {
         //if (bekertTanar == "") bekertTanar = "";
         res.write("3. feladat\n");
         res.write(`Adjon meg egy nevet: <input type='text' name='beker' value=${bekertTanar} style='width: 3em'>\n`);
+        if (megold.idopontSzam(bekertTanar) == 0) {
+            res.write(`${bekertTanar} néven nincs időpont.`);
+        } else {
+            res.write(`${bekertTanar} néven ${megold.idopontSzam(bekertTanar)} időpont van.`);
+        }
 
         //4.
 

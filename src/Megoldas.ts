@@ -17,4 +17,15 @@ export default class Megoldás {
                 if (adatok.length > 0) this._fogadasok.push(new Fogadas(adatok));
             });
     }
+
+    public idopontSzam(bekertTanar: string): number {
+        bekertTanar.split(" ");
+        let szam: null | number = 0;
+        for (const i of this._fogadasok) {
+            if (i.vezeteknev == bekertTanar[0] && i.utonev == bekertTanar[1]) {
+                szam++;
+            }
+        }
+        return szam;
+    }
 }
