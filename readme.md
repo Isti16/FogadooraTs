@@ -5,5 +5,5 @@ Fogadóóra programozási feladat megoldása
 ## Heroku teszt:
 
 
-## A.  Fejlesztői környezet telepítése, beállítása
+## A Fejlesztői környezet telepítése, beállítása
 https://github.com/nitslaszlo/JedlikTsTemplate
