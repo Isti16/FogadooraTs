@@ -17,6 +17,7 @@ export default class Content {
             fs.createReadStream("favicon.ico").pipe(res);
             return;
         }
+        
 
         // Weboldal inicializálása + head rész:
         res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
