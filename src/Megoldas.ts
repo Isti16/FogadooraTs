@@ -18,7 +18,7 @@ export default class Megoldás {
             });
     }
 
-    public idopontSzam(bekertTanar: string, bekertTanark: string): number {
+    public idopontSzam(bekertTanar: string): number {
         let szam = 0;
         this._fogadasok.forEach(e => (e.vezeteknev == bekertTanar[0] && e.vezeteknev == bekertTanar[1] ? "" : szam++));
         return szam;

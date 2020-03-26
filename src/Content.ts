@@ -43,23 +43,20 @@ export default class Content {
         //akkor „A megadott néven nincs időpontfoglalás.” üzenetet jelenítse meg!
         const u = url.parse(req.url as string, true).query;
         let bekertTanar: string = u.fordulo as string;
-        let bekertTanark: string = u.fordulo as string;
-        bekertTanar = "Nagy";
-        bekertTanark = "Ferenc";
+        bekertTanar = "Nagy Ferenc";
         res.write("3. feladat\n");
         res.write(`Adjon meg egy nevet: <input type='text' name='beker' value=${bekertTanar} style='width: 15em' onKeyUp = 'this.form.submit();'  >\n\n`);
-        res.write(`Adjon meg egy nevet: <input type='text' name='bekerk' value=${bekertTanark} style='width: 15em' onKeyUp = 'this.form.submit();'  >\n\n`);
-        if (megold.idopontSzam(bekertTanar, bekertTanark) == 0) {
+        if (megold.idopontSzam(bekertTanar) == 0) {
             res.write(`${bekertTanar} néven nincs időpont.`);
         } else {
-            res.write(`${bekertTanar} néven ${megold.idopontSzam(bekertTanar, bekertTanark)} időpont van.`);
+            res.write(`${bekertTanar} néven ${megold.idopontSzam(bekertTanar)} időpont van.`);
         }
 
         //4. Kérjen be a felhasználótól egy érvényes időpontot a forrásfájlban található formátumban (pl. 17:40)!
-        // A program írja a képernyőre a megadott időpontban foglalt tanárok névsorát! Egy sorban egy név szerepeljen! 
-        //A névsor ábécé szerint rendezett legyen! A rendezett névsort írja ki fájlba is, és ott is soronként egy név szerepeljen! 
-        //Az időpontnak megfelelő fájlnevet használjon, például 17:40 esetén a 1740.txt fájlban tárolja el az adatokat! 
-        //Ügyeljen arra, hogy a fájlnév a kettőspont karaktert ne tartalmazza! 
+        // A program írja a képernyőre a megadott időpontban foglalt tanárok névsorát! Egy sorban egy név szerepeljen!
+        //A névsor ábécé szerint rendezett legyen! A rendezett névsort írja ki fájlba is, és ott is soronként egy név szerepeljen!
+        //Az időpontnak megfelelő fájlnevet használjon, például 17:40 esetén a 1740.txt fájlban tárolja el az adatokat!
+        //Ügyeljen arra, hogy a fájlnév a kettőspont karaktert ne tartalmazza!
         //(Amennyiben ezen a néven nem tudja a fájlt létrehozni, használja az adatok.txt állománynevet!)
 
         // <---- Fejezd be a kódolást
