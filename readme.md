@@ -1,6 +1,9 @@
-#  FogadooraTs
+#  Közismereti informatika érettségi
+#  Fogadóóra programozási feladat megoldása
+#  (2018.05.14 - Emelt szint - Idegennyelvű)
 
 ## Heroku teszt:
-https://jedlik-ts-template.herokuapp.com/ (Deploy menete: Deploy_on_Heroku.pdf)
+
 
 ## A.  Fejlesztői környezet telepítése, beállítása
+https://github.com/nitslaszlo/JedlikTsTemplate
