@@ -45,12 +45,12 @@ export default class Content {
         let bekertTanar: string = u.fordulo as string;
         bekertTanar = "Nagy Ferenc";
         res.write("3. feladat\n");
-        res.write(`Adjon meg egy nevet: <input type='text' name='beker' value=${bekertTanar} style='width: 15em' onKeyUp = 'this.form.submit();'  >\n\n`);
-        if (megold.idopontSzam(bekertTanar) == 0) {
+        res.write(`Adjon meg egy nevet: <input type='text' name='beker' value=${bekertTanar} style='width: 100em' onKeyUp = 'this.form.submit();'  >\n\n`);
+        /*if (megold.idopontSzam(bekertTanar) == 0) {
             res.write(`${bekertTanar} néven nincs időpont.`);
         } else {
             res.write(`${bekertTanar} néven ${megold.idopontSzam(bekertTanar)} időpont van.`);
-        }
+        }*/
 
         //4. Kérjen be a felhasználótól egy érvényes időpontot a forrásfájlban található formátumban (pl. 17:40)!
         // A program írja a képernyőre a megadott időpontban foglalt tanárok névsorát! Egy sorban egy név szerepeljen!
