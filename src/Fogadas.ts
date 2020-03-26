@@ -20,6 +20,18 @@ export default class Fogadas {
         return this._rogzitesIdo;
     }
 
+    public get rogzitesNapja(): string {
+        return this._rogzitesIdo.split("-")[0];
+    }
+
+    public get rogzitesIdeje(): string {
+        return this._rogzitesIdo.split("-")[1];
+    }
+
+    public get teljesNev(): string {
+        return this._utonev + this._vezeteknev;
+    }
+
     constructor(sor: string) {
         const m: string[] = sor.split(" ");
         this._vezeteknev = m[0];

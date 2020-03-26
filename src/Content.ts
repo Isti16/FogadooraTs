@@ -1,7 +1,6 @@
 ﻿import fs from "fs";
 import http from "http";
 import url from "url";
-import Fogadas from "./Fogadas";
 import Megoldas from "./Megoldas";
 
 interface InputInterface {
@@ -45,12 +44,12 @@ export default class Content {
         let bekertTanar: string = u.fordulo as string;
         bekertTanar = "Nagy Ferenc";
         res.write("3. feladat\n");
-        res.write(`Adjon meg egy nevet: <input type='text' name='beker' value=${bekertTanar} style='width: 100em' onKeyUp = 'this.form.submit();'  >\n\n`);
-        /*if (megold.idopontSzam(bekertTanar) == 0) {
-            res.write(`${bekertTanar} néven nincs időpont.`);
+        res.write(`Adjon meg egy nevet: <input type='text' name='beker' value=${bekertTanar} style='width: 12em' >\n\n`);
+        if (megold.idopontSzam(bekertTanar) == 0) {
+            res.write(`${bekertTanar} néven nincs időpont.\n\n`);
         } else {
-            res.write(`${bekertTanar} néven ${megold.idopontSzam(bekertTanar)} időpont van.`);
-        }*/
+            res.write(`${bekertTanar} néven ${megold.idopontSzam(bekertTanar)} időpontfoglalás van.\n\n`);
+        }
 
         //4. Kérjen be a felhasználótól egy érvényes időpontot a forrásfájlban található formátumban (pl. 17:40)!
         // A program írja a képernyőre a megadott időpontban foglalt tanárok névsorát! Egy sorban egy név szerepeljen!
@@ -59,6 +58,9 @@ export default class Content {
         //Ügyeljen arra, hogy a fájlnév a kettőspont karaktert ne tartalmazza!
         //(Amennyiben ezen a néven nem tudja a fájlt létrehozni, használja az adatok.txt állománynevet!)
 
+        //5. Határozza meg, majd írja ki a képernyőre a legkorábban lefoglalt időpont minden adatát!
+        //Az adatok megjelenítésénél pontosan kövesse a feladat végén szereplő mintát!
+        res.write(`Tanár neve: ${megold.legkorabbiTanar}\n`);
         // <---- Fejezd be a kódolást
 
         res.write("</pre></form></body></html>");

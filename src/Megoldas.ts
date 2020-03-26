@@ -18,9 +18,16 @@ export default class Megoldás {
             });
     }
 
-    /*public idopontSzam(bekertTanar: string): number {
+    public idopontSzam(bekertTanar: string): number {
+        const teljesNev = bekertTanar.split(" ");
         let szam = 0;
-        this._fogadasok.forEach(e => (e.vezeteknev == bekertTanar[0] && e.vezeteknev == bekertTanar[1] ? "" : szam++));
+        this._fogadasok.forEach(e => (e.vezeteknev == teljesNev[0] && e.vezeteknev == teljesNev[1] ? "" : szam++));
         return szam;
-    }*/
+    }
+
+    public legkorabbiTanar(): string {
+        let talaltNev = "";
+        this._fogadasok.forEach(e => (parseInt(e.rogzitesNapja.split(".")[0]) <= 2017 || parseInt(e.rogzitesNapja.split(".")[1]) <= 12 || parseInt(e.rogzitesNapja.split(".")[2]) <= 31 ? "" : (talaltNev = e.teljesNev)));
+        return talaltNev;
+    }
 }
