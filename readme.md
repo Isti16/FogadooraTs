@@ -1,4 +1,4 @@
-#  Közismereti informatika érettségi
+#  Közismereti informatika érettségi \n
 Fogadóóra programozási feladat megoldása
 (2018.05.14 - Emelt szint - Idegennyelvű)
 
