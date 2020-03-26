@@ -42,7 +42,7 @@ export default class Content {
         //akkor „A megadott néven nincs időpontfoglalás.” üzenetet jelenítse meg!
         const u = url.parse(req.url as string, true).query;
         let bekertTanar: string = u.fordulo as string;
-        bekertTanar = "Nagy Ferenc";
+        bekertTanar = "NagyFerenc";
         res.write("3. feladat\n");
         res.write(`Adjon meg egy nevet: <input type='text' name='beker' value=${bekertTanar} style='width: 12em' >\n\n`);
         if (megold.idopontSzam(bekertTanar) == 0) {

@@ -19,9 +19,8 @@ export default class Megoldás {
     }
 
     public idopontSzam(bekertTanar: string): number {
-        const teljesNev = bekertTanar.split(" ");
         let szam = 0;
-        this._fogadasok.forEach(e => (e.vezeteknev == teljesNev[0] && e.vezeteknev == teljesNev[1] ? "" : szam++));
+        this._fogadasok.forEach(e => (e.teljesNev == bekertTanar ? "" : szam++));
         return szam;
     }
 

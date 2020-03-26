@@ -29,7 +29,7 @@ export default class Fogadas {
     }
 
     public get teljesNev(): string {
-        return this._utonev + this._vezeteknev;
+        return this._utonev + "" + this._vezeteknev;
     }
 
     constructor(sor: string) {
