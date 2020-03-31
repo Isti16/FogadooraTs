@@ -24,6 +24,20 @@ export default class Megoldás {
         return szam;
     }
 
+    /*public foglaltTanarok(idopont: string): string[] {
+        const tanarok: string[] = [""];
+        this._fogadasok.forEach(e => (e.lefoglaltIdo === idopont ? tanarok.push(e.teljesNev + "\n") : ""));
+        return tanarok.sort();
+    }*/
+    public foglaltTanarok(idopont: string): string {
+        const tanarok: string[] = [""];
+        let seged = "";
+        this._fogadasok.forEach(e => (e.lefoglaltIdo === idopont ? tanarok.push(e.teljesNev + "\n") : ""));
+        tanarok.sort();
+        tanarok.forEach(e => (seged += e));
+        return seged;
+    }
+
     public legkorabbiTanar(): string {
         let talaltNev = "";
         this._fogadasok.forEach(e => (parseInt(e.rogzitesNapja.split(".")[0]) <= 2017 || parseInt(e.rogzitesNapja.split(".")[1]) <= 12 || parseInt(e.rogzitesNapja.split(".")[2]) <= 31 ? "" : (talaltNev = e.teljesNev)));

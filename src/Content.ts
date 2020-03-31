@@ -25,7 +25,7 @@ export default class Content {
         res.write("<head>");
         res.write("<style>input, pre {font-family:monospace; font-size:1em; font-weight:bold;}</style>");
         res.write("<meta name='viewport' content='width=device-width, initial-scale=1.0'>");
-        res.write("<title>Jedlik Ts Template</title>");
+        res.write("<title>Fogadóóra Ts</title>");
         res.write("</head>");
         res.write("<body><form><pre>");
 
@@ -71,9 +71,11 @@ export default class Content {
             bekertIdopont = "17:40";
         }
         res.write(`Adjon meg egy érvényes időpontot (pl. 17:10): <input type='text' name='beker_idopont' value=${bekertIdopont} style='width: 12em' >\n\n`);
+        res.write(`${megold.foglaltTanarok(bekertIdopont)}`);
         //5. Határozza meg, majd írja ki a képernyőre a legkorábban lefoglalt időpont minden adatát!
         //Az adatok megjelenítésénél pontosan kövesse a feladat végén szereplő mintát!
-        res.write(`Tanár neve: ${megold.legkorabbiTanar}\n`);
+
+        //res.write(`Tanár neve: ${megold.legkorabbiTanar}\n`);
 
         res.write("\nGithub repository link: <a href='https://github.com/Isti16/FogadooraTs.git'>https://github.com/Isti16/FogadooraTs</a>\n\n");
 
