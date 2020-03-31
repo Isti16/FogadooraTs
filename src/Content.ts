@@ -51,8 +51,8 @@ export default class Content {
             bekertTanarUtonev = "Ferenc";
         }
         res.write("3. feladat\n");
-        res.write(`Adjon meg egy vezetéknevet: <input type='text' name='beker_vezeteknev' value=${bekertTanarVezeteknev} style='width: 12em' >\n`);
-        res.write(`Adjon meg egy utónevet: <input type='text' name='beker_utonev' value=${bekertTanarUtonev} style='width: 12em' >\n\n`);
+        res.write(`Adjon meg egy vezetéknevet: <input type='text' name='beker_vezeteknev' value=${bekertTanarVezeteknev} style='width: 12em' onChange='this.form.submit();' >\n`);
+        res.write(`Adjon meg egy utónevet: <input type='text' name='beker_utonev' value=${bekertTanarUtonev} style='width: 12em' onChange='this.form.submit();' >\n\n`);
         if (megold.idopontSzam(bekertTanarVezeteknev, bekertTanarUtonev) == 0) {
             res.write(`${bekertTanarVezeteknev} ${bekertTanarUtonev} néven nincs időpont.\n\n`);
         } else {
@@ -70,7 +70,7 @@ export default class Content {
         if (isUndefined(bekertIdopont) || bekertIdopont === "") {
             bekertIdopont = "17:40";
         }
-        res.write(`Adjon meg egy érvényes időpontot (pl. 17:10): <input type='text' name='beker_idopont' value=${bekertIdopont} style='width: 12em' >\n\n`);
+        res.write(`Adjon meg egy érvényes időpontot (pl. 17:10): <input type='text' name='beker_idopont' value=${bekertIdopont} style='width: 12em' onChange='this.form.submit();' >\n\n`);
         res.write(`${megold.foglaltTanarok(bekertIdopont)}`);
         //5. Határozza meg, majd írja ki a képernyőre a legkorábban lefoglalt időpont minden adatát!
         //Az adatok megjelenítésénél pontosan kövesse a feladat végén szereplő mintát!
