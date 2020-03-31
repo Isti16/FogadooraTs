@@ -2,6 +2,7 @@
 import http from "http";
 import url from "url";
 import Megoldas from "./Megoldas";
+import { isUndefined, isNull } from "util";
 
 interface InputInterface {
     name: string;
@@ -41,14 +42,21 @@ export default class Content {
         //Ha a megadott tanárhoz – ilyen például Farkas Attila – még nem történt foglalás,
         //akkor „A megadott néven nincs időpontfoglalás.” üzenetet jelenítse meg!
         const u = url.parse(req.url as string, true).query;
-        let bekertTanar: string = u.fordulo as string;
-        bekertTanar = "NagyFerenc";
+        let bekertTanarVezeteknev: string = u.beker_vezeteknev as string;
+        let bekertTanarUtonev: string = u.beker_vezeteknev as string;
+        if (isUndefined(bekertTanarVezeteknev) || isNull(bekertTanarUtonev) || bekertTanarVezeteknev === "") {
+            bekertTanarVezeteknev = "Nagy";
+        }
+        if (isUndefined(bekertTanarUtonev) || bekertTanarUtonev === "") {
+            bekertTanarUtonev = "Ferenc";
+        }
         res.write("3. feladat\n");
-        res.write(`Adjon meg egy nevet: <input type='text' name='beker' value=${bekertTanar} style='width: 12em' >\n\n`);
-        if (megold.idopontSzam(bekertTanar) == 0) {
-            res.write(`${bekertTanar} néven nincs időpont.\n\n`);
+        res.write(`Adjon meg egy vezetéknevet: <input type='text' name='beker_vezeteknev' value=${bekertTanarVezeteknev} style='width: 12em' >\n\n`);
+        res.write(`Adjon meg egy utónevet: <input type='text' name='beker_utonev' value=${bekertTanarUtonev} style='width: 12em' >\n\n`);
+        if (megold.idopontSzam(bekertTanarVezeteknev, bekertTanarUtonev) == 0) {
+            res.write(`${bekertTanarVezeteknev} ${bekertTanarUtonev} néven nincs időpont.\n\n`);
         } else {
-            res.write(`${bekertTanar} néven ${megold.idopontSzam(bekertTanar)} időpontfoglalás van.\n\n`);
+            res.write(`${bekertTanarVezeteknev} ${bekertTanarUtonev} néven ${megold.idopontSzam(bekertTanarVezeteknev, bekertTanarUtonev)} időpontfoglalás van.\n\n`);
         }
 
         //4. Kérjen be a felhasználótól egy érvényes időpontot a forrásfájlban található formátumban (pl. 17:40)!
