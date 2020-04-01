@@ -1,5 +1,6 @@
-import fs from "fs";
+import fs, { write } from "fs";
 import Fogadas from "./Fogadas";
+import { resolve } from "dns";
 
 export default class Megoldás {
     private _fogadasok: Fogadas[] = [];
@@ -86,5 +87,27 @@ export default class Megoldás {
             }
         }
         return keresettNev + "\n" + "Foglalt időpont: " + foglaltIdopont + "\n" + "Foglalás ideje: " + foglalasIdeje;
+    }
+
+    public Idostring(intervallumId: number): string {
+        const ora = (16 * 60 + intervallumId * 10) / 60;
+        const perc = (16 * 60 + intervallumId * 10) % 60;
+        return ora.toString() + ":" + perc.toString();
+    }
+
+    public get Szabadsavok(): string {
+        const foglalt = Array<boolean>(12);
+        let szoveg = "";
+        for (let i = 1; i < 12; i++) {
+            foglalt[i] = false;
+        }
+        this._fogadasok.forEach(e => (e.teljesNev == "Barna Eszter" ? foglalt[e.etap] == true : ""));
+        for (let i = 1; i < 12; i++) {
+            if (foglalt[i] == false) {
+                szoveg += this._fogadasok[i].lefoglaltIdo.toString() + "\n";
+            }
+        }
+
+        return szoveg;
     }
 }

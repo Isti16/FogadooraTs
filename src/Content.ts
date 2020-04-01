@@ -47,7 +47,7 @@ export default class Content {
             bekertTanarNev = "Nagy Ferenc";
         }
         res.write("3. feladat\n");
-        res.write(`Adjon meg egy vezetéknevet: <input type='text' name='bekertnev' value=${bekertTanarNev} style='width: 12em' onChange='this.form.submit();' >\n`);
+        res.write(`Adjon meg egy nevet: <input type='text' name='bekertnev' value=${bekertTanarNev} style='width: 12em' onChange='this.form.submit();' >\n`);
         if (megold.idopontSzam(bekertTanarNev) == 0) {
             res.write(`${bekertTanarNev} néven nincs időpont.\n\n`);
         } else {
@@ -65,7 +65,7 @@ export default class Content {
         if (isUndefined(bekertIdopont) || bekertIdopont === "") {
             bekertIdopont = "17:40";
         }
-        res.write(`Adjon meg egy érvényes időpontot (pl. 17:10): <input type='text' name='beker_idopont' value=${bekertIdopont} style='width: 12em' onChange='this.form.submit();' >\n\n`);
+        res.write(`Adjon meg egy érvényes időpontot (pl. 17:10): <input type='text' name='beker_idopont' value=${bekertIdopont} style='width: 3em' onChange='this.form.submit();' >\n\n`);
         res.write(`${megold.foglaltTanarok(bekertIdopont)}`);
         megold.allomanybaIr(bekertIdopont.replace(":", "").toString() + ".txt", megold.irasSeged(bekertIdopont));
         //5. Határozza meg, majd írja ki a képernyőre a legkorábban lefoglalt időpont minden adatát!
@@ -80,6 +80,8 @@ export default class Content {
         //Mikor távozhat legkorábban? Az időpontot azonosíthatóan írja ki a képernyőre!
 
         res.write("\n6. feladat\n");
+        res.write(`${megold.Szabadsavok}`);
+        res.write("Barna Eszter legkorábban távozhat: \n");
 
         res.write("\nGithub repository link: <a href='https://github.com/Isti16/FogadooraTs.git'>https://github.com/Isti16/FogadooraTs</a>\n\n");
 
