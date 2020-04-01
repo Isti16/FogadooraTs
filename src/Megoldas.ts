@@ -1,6 +1,5 @@
-import fs, { write } from "fs";
+import fs from "fs";
 import Fogadas from "./Fogadas";
-import { resolve } from "dns";
 
 export default class Megoldás {
     private _fogadasok: Fogadas[] = [];
