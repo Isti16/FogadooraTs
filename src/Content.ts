@@ -76,18 +76,18 @@ export default class Content {
 
         res.write("\nGithub repository link: <a href='https://github.com/Isti16/FogadooraTs.git'>https://github.com/Isti16/FogadooraTs</a>\n\n");
 
-        res.write("A fogado.txt kiírása:\n\n");
+        res.write(bekertIdopont.replace(":", "").toString() + ".txt kiírása:\n\n");
 
-        fs.readFileSync("fogado.txt")
+        fs.readFileSync(bekertIdopont.replace(":", "").toString() + ".txt")
             .toString()
             .split("\r\n")
             .forEach(l => {
                 res.write(l + "\n");
             });
 
-        res.write(bekertIdopont.replace(":", "").toString() + ".txt kiírása:\n\n");
+        res.write("A fogado.txt kiírása:\n\n");
 
-        fs.readFileSync(bekertIdopont.replace(":", "").toString() + ".txt")
+        fs.readFileSync("fogado.txt")
             .toString()
             .split("\r\n")
             .forEach(l => {
