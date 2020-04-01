@@ -2,7 +2,7 @@
 import http from "http";
 import url from "url";
 import Megoldas from "./Megoldas";
-import { isUndefined } from "util";
+import { isUndefined, isNull } from "util";
 
 interface InputInterface {
     name: string;
@@ -42,21 +42,16 @@ export default class Content {
         //Ha a megadott tanárhoz – ilyen például Farkas Attila – még nem történt foglalás,
         //akkor „A megadott néven nincs időpontfoglalás.” üzenetet jelenítse meg!
         const u = url.parse(req.url as string, true).query;
-        let bekertTanarVezeteknev: string = u.beker_vezeteknev as string;
-        let bekertTanarUtonev: string = u.beker_vezeteknev as string;
-        if (isUndefined(bekertTanarVezeteknev) || bekertTanarVezeteknev === "") {
-            bekertTanarVezeteknev = "Nagy";
-        }
-        if (isUndefined(bekertTanarUtonev) || bekertTanarUtonev === "") {
-            bekertTanarUtonev = "Ferenc";
+        let bekertTanarNev: string = u.bekertnev as string;
+        if (isUndefined(bekertTanarNev) || isNull(bekertTanarNev) || bekertTanarNev === "") {
+            bekertTanarNev = "Nagy Ferenc";
         }
         res.write("3. feladat\n");
-        res.write(`Adjon meg egy vezetéknevet: <input type='text' name='beker_vezeteknev' value=${bekertTanarVezeteknev} style='width: 12em' onChange='this.form.submit();' >\n`);
-        res.write(`Adjon meg egy utónevet: <input type='text' name='beker_utonev' value=${bekertTanarUtonev} style='width: 12em' onChange='this.form.submit();' >\n\n`);
-        if (megold.idopontSzam(bekertTanarVezeteknev, bekertTanarUtonev) == 0) {
-            res.write(`${bekertTanarVezeteknev} ${bekertTanarUtonev} néven nincs időpont.\n\n`);
+        res.write(`Adjon meg egy vezetéknevet: <input type='text' name='bekertnev' value=${bekertTanarNev} style='width: 12em' onChange='this.form.submit();' >\n`);
+        if (megold.idopontSzam(bekertTanarNev) == 0) {
+            res.write(`${bekertTanarNev} néven nincs időpont.\n\n`);
         } else {
-            res.write(`${bekertTanarVezeteknev} ${bekertTanarUtonev} néven ${megold.idopontSzam(bekertTanarVezeteknev, bekertTanarUtonev)} időpontfoglalás van.\n\n`);
+            res.write(`${bekertTanarNev} néven ${megold.idopontSzam(bekertTanarNev)} időpontfoglalás van.\n\n`);
         }
 
         //4. Kérjen be a felhasználótól egy érvényes időpontot a forrásfájlban található formátumban (pl. 17:40)!
@@ -72,9 +67,11 @@ export default class Content {
         }
         res.write(`Adjon meg egy érvényes időpontot (pl. 17:10): <input type='text' name='beker_idopont' value=${bekertIdopont} style='width: 12em' onChange='this.form.submit();' >\n\n`);
         res.write(`${megold.foglaltTanarok(bekertIdopont)}`);
+        megold.allomanybaIr(bekertIdopont.replace(":", "").toString() + ".txt", megold.irasSeged(bekertIdopont));
         //5. Határozza meg, majd írja ki a képernyőre a legkorábban lefoglalt időpont minden adatát!
         //Az adatok megjelenítésénél pontosan kövesse a feladat végén szereplő mintát!
 
+        res.write("\n5. feladat\n");
         //res.write(`Tanár neve: ${megold.legkorabbiTanar}\n`);
 
         res.write("\nGithub repository link: <a href='https://github.com/Isti16/FogadooraTs.git'>https://github.com/Isti16/FogadooraTs</a>\n\n");
@@ -87,6 +84,16 @@ export default class Content {
             .forEach(l => {
                 res.write(l + "\n");
             });
+
+        res.write(bekertIdopont.replace(":", "").toString() + ".txt kiírása:\n\n");
+
+        fs.readFileSync(bekertIdopont.replace(":", "").toString() + ".txt")
+            .toString()
+            .split("\r\n")
+            .forEach(l => {
+                res.write(l + "\n");
+            });
+
         // <---- Fejezd be a kódolást
 
         res.write("</pre></form></body></html>");

@@ -18,9 +18,9 @@ export default class Megoldás {
             });
     }
 
-    public idopontSzam(bekertTanarVezeteknev: string, bekertTanarUtonev: string): number {
+    public idopontSzam(bekertTanarNev: string): number {
         let szam = 0;
-        this._fogadasok.forEach(e => (e.vezeteknev == bekertTanarVezeteknev && e.utonev == bekertTanarUtonev ? szam++ : ""));
+        this._fogadasok.forEach(e => (e.teljesNev == bekertTanarNev ? szam++ : ""));
         return szam;
     }
 
@@ -30,7 +30,7 @@ export default class Megoldás {
         return tanarok.sort();
     }*/
     public foglaltTanarok(idopont: string): string {
-        const tanarok: string[] = [""];
+        const tanarok: string[] = [];
         let seged = "";
         this._fogadasok.forEach(e => (e.lefoglaltIdo === idopont ? tanarok.push(e.teljesNev + "\n") : ""));
         tanarok.sort();
@@ -38,9 +38,23 @@ export default class Megoldás {
         return seged;
     }
 
-    public legkorabbiTanar(): string {
-        let talaltNev = "";
-        this._fogadasok.forEach(e => (parseInt(e.rogzitesNapja.split(".")[0]) <= 2017 || parseInt(e.rogzitesNapja.split(".")[1]) <= 12 || parseInt(e.rogzitesNapja.split(".")[2]) <= 31 ? "" : (talaltNev = e.teljesNev)));
-        return talaltNev;
+    public irasSeged(idopont: string): string[] {
+        const tanarok: string[] = [];
+        this._fogadasok.forEach(e => (e.lefoglaltIdo === idopont ? tanarok.push(e.teljesNev + "\n") : ""));
+        return tanarok.sort();
     }
+
+    public allomanybaIr(fajlnev: string, tartalom: string[]): void {
+        fs.writeFileSync(fajlnev, tartalom.join(""));
+    }
+
+    /*public legkorabbiTanar(): string {
+        const talaltNev = "";
+        const segedev = new Date(2020, 12, 12);
+        for (let i = 1; i < this._fogadasok.length; i++) {
+            if (this._fogadasok[i].rogzitesNapja <= segedev) {
+            }
+        }
+        return talaltNev;
+    }*/
 }

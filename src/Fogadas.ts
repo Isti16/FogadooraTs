@@ -21,7 +21,7 @@ export default class Fogadas {
     }
 
     public get rogzitesNapja(): string {
-        return this._rogzitesIdo.split("-")[0];
+        return this._rogzitesIdo.split("-")[0].replace(".", "-");
     }
 
     public get rogzitesIdeje(): string {
