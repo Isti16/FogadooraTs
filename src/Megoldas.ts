@@ -94,7 +94,7 @@ export default class Megoldás {
         return ora.toString() + ":" + perc.toString();
     }
 
-    public get Szabadsavok(): string {
+    /*public get Szabadsavok(): string {
         const foglalt = Array<boolean>(12);
         let szoveg = "";
         for (let i = 1; i < 12; i++) {
@@ -105,6 +105,23 @@ export default class Megoldás {
             if (foglalt[i] == false) {
                 szoveg += this._fogadasok[i].lefoglaltIdo.toString() + "\n";
             }
+        }
+
+        return szoveg;
+    }*/
+    public get Szabadsavok(): string {
+        const seged: string[] = ["16:00", "16:10", "16:20", "16:30", "16:40", "16:50", "17:00", "17:10", "17:20", "17:30", "17:40", "17:50"];
+        let szoveg = "";
+        for (let i = 1; i < this._fogadasok.length; i++) {
+            for (let j = 1; j < seged.length; j++) {
+                if (seged[j] == this._fogadasok[i].lefoglaltIdo && this._fogadasok[i].teljesNev == "Barna Eszter") {
+                    seged.splice(j, 1);
+                }
+            }
+        }
+
+        for (const elem of seged) {
+            szoveg += elem + "\n";
         }
 
         return szoveg;
