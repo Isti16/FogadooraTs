@@ -72,7 +72,14 @@ export default class Content {
         //Az adatok megjelenítésénél pontosan kövesse a feladat végén szereplő mintát!
 
         res.write("\n5. feladat\n");
-        //res.write(`Tanár neve: ${megold.legkorabbiTanar}\n`);
+        res.write(`Tanár neve: ${megold.legkorabbiTanar}\n`);
+
+        //6. Írja ki a képernyőre „Barna Eszter” tanárnő szabad időpontjait!
+        //Tudjuk, hogy a tanárnőnek legalább egy foglalt és több szabad időpontja is van.
+        //A tanárnő a legutolsó szülő fogadása után távozhat az iskolából.
+        //Mikor távozhat legkorábban? Az időpontot azonosíthatóan írja ki a képernyőre!
+
+        res.write("\n6. feladat\n");
 
         res.write("\nGithub repository link: <a href='https://github.com/Isti16/FogadooraTs.git'>https://github.com/Isti16/FogadooraTs</a>\n\n");
 

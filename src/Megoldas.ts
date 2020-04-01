@@ -57,4 +57,34 @@ export default class Megoldás {
         }
         return talaltNev;
     }*/
+
+    /*public get legkorabbiTanar(): string {
+        let elso: Fogadas = this._fogadasok[0];
+        //this._fogadasok.forEach(e => (e.etap < elso ? (elso = e.etap) : ""));
+        //const nev = elso.teljesNev.toString();
+        for (let i = 1; i < this._fogadasok.length; i++) {
+            if (this._fogadasok[i].etap < elso.etap) {
+                elso = this._fogadasok[i];
+            }
+        }
+        return elso.teljesNev;
+    }*/
+
+    public get legkorabbiTanar(): string {
+        let keresettHonap = this._fogadasok[0].honap;
+        let keresettNap = this._fogadasok[0].nap;
+        let keresettNev = this._fogadasok[0].teljesNev;
+        let foglaltIdopont = this._fogadasok[0].lefoglaltIdo;
+        let foglalasIdeje = this._fogadasok[0].rogzitesIdo;
+        for (const fogadas of this._fogadasok) {
+            if (fogadas.honap < keresettHonap && fogadas.nap < keresettNap) {
+                keresettHonap = fogadas.honap;
+                keresettNap = fogadas.nap;
+                keresettNev = fogadas.teljesNev;
+                foglaltIdopont = fogadas.lefoglaltIdo;
+                foglalasIdeje = fogadas.rogzitesIdeje;
+            }
+        }
+        return keresettNev + "\n" + "Foglalt időpont: " + foglaltIdopont + "\n" + "Foglalás ideje: " + foglalasIdeje;
+    }
 }
