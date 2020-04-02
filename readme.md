@@ -4,7 +4,3 @@ Fogadóóra programozási feladat megoldása
 
 ## Heroku teszt:
 https://fogadoora-ts.herokuapp.com/
-
-
-## A Fejlesztői környezet telepítése, beállítása
-https://github.com/nitslaszlo/JedlikTsTemplate
