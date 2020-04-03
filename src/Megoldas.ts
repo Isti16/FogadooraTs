@@ -111,6 +111,7 @@ export default class Megoldás {
     }*/
     public get Szabadsavok(): string {
         const seged: string[] = ["16:00", "16:10", "16:20", "16:30", "16:40", "16:50", "17:00", "17:10", "17:20", "17:30", "17:40", "17:50"];
+        const tavozasOra: string[] = [];
         let szoveg = "";
         for (let i = 1; i < this._fogadasok.length; i++) {
             for (let j = 1; j < seged.length; j++) {
@@ -119,11 +120,33 @@ export default class Megoldás {
                 }
             }
         }
+        tavozasOra.push(seged[seged.length - 2]);
 
         for (const elem of seged) {
             szoveg += elem + "\n";
         }
 
         return szoveg;
+    }
+
+    public get TavozasOra(): string {
+        let talaltOra = 0;
+        let szam = 0;
+        let seged = 0;
+        let masikseged = 0;
+        for (let i = 1; i < this._fogadasok.length; i++) {
+            if (this._fogadasok[i].teljesNev == "Barna Eszter" && (parseInt(this._fogadasok[i].lefoglaltIdo.split(":")[0]) > seged || parseInt(this._fogadasok[i].lefoglaltIdo.split(":")[1]) > masikseged)) {
+                szam = i;
+                seged = parseInt(this._fogadasok[i].lefoglaltIdo.split(":")[0]);
+                masikseged = parseInt(this._fogadasok[i].lefoglaltIdo.split(":")[1]);
+            }
+        }
+        if (this._fogadasok[szam].lefoglaltIdo.split(":")[1]) {
+            talaltOra = parseInt(this._fogadasok[szam].lefoglaltIdo.split(":")[1]) + 10;
+            return this._fogadasok[szam].lefoglaltIdo.split(":")[0] + ":" + talaltOra.toString();
+        } else {
+            talaltOra = parseInt(this._fogadasok[szam].lefoglaltIdo.split(":")[0]) + 1;
+            return talaltOra + ":00";
+        }
     }
 }

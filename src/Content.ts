@@ -80,8 +80,8 @@ export default class Content {
         //Mikor távozhat legkorábban? Az időpontot azonosíthatóan írja ki a képernyőre!
 
         res.write("\n6. feladat\n");
-        res.write(`${megold.Szabadsavok}`);
-        res.write("Barna Eszter legkorábban távozhat: \n");
+        res.write(`${megold.Szabadsavok} \n`);
+        res.write(`Barna Eszter legkorábban távozhat: ${megold.TavozasOra}\n`);
 
         res.write("\nGithub repository link: <a href='https://github.com/Isti16/FogadooraTs.git'>https://github.com/Isti16/FogadooraTs</a>\n\n");
 
