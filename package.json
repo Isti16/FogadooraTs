@@ -1,7 +1,7 @@
 {
-    "name": "jedlik-typescript-vscode-template",
+    "name": "ki-erettsegi-fogadoora",
     "version": "1.0.0",
-    "description": "Jedlik project template for using TypeScript, Jest and Node.js in VS Code.",
+    "description": "Fogadóóra idegen nyelvű közismereti emelt szintű érettségi feladat",
     "engines": {
         "node": "13.x"
     },
@@ -20,7 +20,7 @@
         "test": "jest || ECHO.",
         "dev": "nodemon"
     },
-    "author": "Nits László",
+    "author": "Kiss István",
     "license": "MIT",
     "dependencies": {
         "tslib": "^1.11.1"
@@ -28,14 +28,14 @@
     "devDependencies": {
         "@types/jest": "^25.1.4",
         "@types/node": "^13.9.0",
-        "@typescript-eslint/eslint-plugin": "^2.23.0",
-        "@typescript-eslint/parser": "^2.23.0",
+        "@typescript-eslint/eslint-plugin": "^2.24.0",
+        "@typescript-eslint/parser": "^2.24.0",
         "eslint": "^6.8.0",
-        "eslint-config-prettier": "^6.10.0",
+        "eslint-config-prettier": "^6.10.1",
         "eslint-plugin-prettier": "^3.1.2",
         "jest": "^25.1.0",
         "nodemon": "^2.0.2",
-        "prettier": "^1.19.1",
+        "prettier": "^2.0.1",
         "ts-jest": "^25.2.1",
         "typescript": "^3.8.3"
     },
