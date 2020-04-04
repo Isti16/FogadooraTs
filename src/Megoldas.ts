@@ -70,12 +70,13 @@ export default class Megoldás {
         return elso.teljesNev;
     }*/
 
-    public get legkorabbiTanar(): string {
+    public get legkorabbiTanar(): string[] {
         let keresettHonap = this._fogadasok[0].honap;
         let keresettNap = this._fogadasok[0].nap;
         let keresettNev = this._fogadasok[0].teljesNev;
         let foglaltIdopont = this._fogadasok[0].lefoglaltIdo;
         let foglalasIdeje = this._fogadasok[0].rogzitesIdo;
+        const tarolo = [];
         for (const fogadas of this._fogadasok) {
             if (fogadas.honap < keresettHonap && fogadas.nap < keresettNap) {
                 keresettHonap = fogadas.honap;
@@ -85,7 +86,9 @@ export default class Megoldás {
                 foglalasIdeje = fogadas.rogzitesIdeje;
             }
         }
-        return keresettNev + "\n" + "Foglalt időpont: " + foglaltIdopont + "\n" + "Foglalás ideje: " + foglalasIdeje;
+        tarolo.push(keresettNev, foglaltIdopont, foglalasIdeje);
+        return tarolo;
+        //return keresettNev + "\n" + "Foglalt időpont: " + foglaltIdopont + "\n" + "Foglalás ideje: " + foglalasIdeje;
     }
 
     public Idostring(intervallumId: number): string {
@@ -111,7 +114,6 @@ export default class Megoldás {
     }*/
     public get Szabadsavok(): string {
         const seged: string[] = ["16:00", "16:10", "16:20", "16:30", "16:40", "16:50", "17:00", "17:10", "17:20", "17:30", "17:40", "17:50"];
-        const tavozasOra: string[] = [];
         let szoveg = "";
         for (let i = 1; i < this._fogadasok.length; i++) {
             for (let j = 1; j < seged.length; j++) {
@@ -120,8 +122,6 @@ export default class Megoldás {
                 }
             }
         }
-        tavozasOra.push(seged[seged.length - 2]);
-
         for (const elem of seged) {
             szoveg += elem + "\n";
         }
