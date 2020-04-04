@@ -66,7 +66,7 @@ export default class Content {
             bekertIdopont = "17:40";
         }
         res.write(`Adjon meg egy érvényes időpontot (pl. 17:10): <input type='text' name='beker_idopont' value=${bekertIdopont} style='width: 3em' onChange='this.form.submit();' >\n\n`);
-        res.write(`${megold.foglaltTanarok(bekertIdopont)}`);
+        res.write(`${megold.foglaltTanarok(bekertIdopont.trim())}`);
         megold.allomanybaIr(bekertIdopont.replace(":", "").toString() + ".txt", megold.irasSeged(bekertIdopont));
         //5. Határozza meg, majd írja ki a képernyőre a legkorábban lefoglalt időpont minden adatát!
         //Az adatok megjelenítésénél pontosan kövesse a feladat végén szereplő mintát!
