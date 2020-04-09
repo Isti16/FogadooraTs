@@ -1,5 +1,4 @@
 import Megoldas from "../Megoldas";
-import fs from "fs";
 
 describe("Megoldás osztály unit tesztjei", () => {
     const megoldas: Megoldas = new Megoldas("fogado.txt");
