@@ -11,10 +11,6 @@ describe("Megoldás osztály unit tesztek", () => {
         expect(megoldas.bejegyzesekSzama).toBe(161);
     });
 
-    it("Legkorábbi tanár és adatai", async () => {
-        expect(megoldas.legkorabbiTanar).toStrictEqual(["Csorba Ede", "16:30", "2017.10.28-18:48"]);
-    });
-
     it("Szabadsávok", async () => {
         expect(megoldas.Szabadsavok).toBe("16:00\n16:10\n17:00\n17:40\n17:50\n");
     });

@@ -72,9 +72,10 @@ export default class Content {
         //Az adatok megjelenítésénél pontosan kövesse a feladat végén szereplő mintát!
 
         res.write("\n5. feladat\n");
-        res.write(`Tanár neve: ${megold.legkorabbiTanar[0]}\n`);
-        res.write(`Foglalt időpont: ${megold.legkorabbiTanar[1]}\n`);
-        res.write(`Foglalás ideje: ${megold.legkorabbiTanar[2]}\n`);
+        const legelso = megold.Legelso();
+        res.write(`Tanár neve: ${legelso.teljesNev}\n`);
+        res.write(`Foglalt időpont: ${legelso.lefoglaltIdo}\n`);
+        res.write(`Foglalás ideje: ${legelso.rogzitesIdo}\n`);
 
         //6. Írja ki a képernyőre „Barna Eszter” tanárnő szabad időpontjait!
         //Tudjuk, hogy a tanárnőnek legalább egy foglalt és több szabad időpontja is van.

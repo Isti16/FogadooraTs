@@ -43,30 +43,16 @@ export default class Megoldás {
         fs.writeFileSync(fajlnev, tartalom.join(""));
     }
 
-    public get legkorabbiTanar(): string[] {
-        let keresettHonap = this._fogadasok[0].honap;
-        let keresettNap = this._fogadasok[0].nap;
-        let keresettNev = this._fogadasok[0].teljesNev;
-        let foglaltIdopont = this._fogadasok[0].lefoglaltIdo;
-        let foglalasIdeje = this._fogadasok[0].rogzitesIdo;
-        const tarolo = [];
-        for (const fogadas of this._fogadasok) {
-            if (fogadas.honap < keresettHonap && fogadas.nap < keresettNap) {
-                keresettHonap = fogadas.honap;
-                keresettNap = fogadas.nap;
-                keresettNev = fogadas.teljesNev;
-                foglaltIdopont = fogadas.lefoglaltIdo;
-                foglalasIdeje = fogadas.rogzitesIdeje;
-            }
-        }
-        tarolo.push(keresettNev, foglaltIdopont, foglalasIdeje);
-        return tarolo;
+    public Legelso(): Fogadas {
+        let elso = this._fogadasok[0];
+        this._fogadasok.forEach(e => (elso.etap > e.etap ? (elso = e) : ""));
+        return this._fogadasok[0];
     }
 
     public Idostring(intervallumId: number): string {
         const ora = (16 * 60 + intervallumId * 10) / 60;
         const perc = (16 * 60 + intervallumId * 10) % 60;
-        return ora.toString() + ":" + perc.toString();
+        return ora.toFixed(0).toString() + ":" + perc.toString();
     }
 
     public get Szabadsavok(): string {
@@ -85,6 +71,34 @@ export default class Megoldás {
 
         return szoveg;
     }
+
+    /*public get Szabadsavokk(): string {
+        const foglalt: boolean[] = [];
+        let seged = "";
+        for (let i = 0; i < 12; i++) {
+            foglalt[i] = false;
+        }
+        this._fogadasok.forEach(e => (e.teljesNev == "Barna Eszter" ? (foglalt[e.etap] = true) : ""));
+        for (let i = 0; i < 12; i++) {
+            if (!foglalt[i]) {
+                seged += this.Idostring(i) + "\n";
+            }
+        }
+        return seged;
+    }
+
+    public get Tavozas(): number {
+        const foglalt: boolean[] = [];
+        for (let i = 0; i < 12; i++) {
+            foglalt[i] = false;
+        }
+        this._fogadasok.forEach(e => (e.teljesNev == "Barna Eszter" ? (foglalt[e.etap] = true) : ""));
+        let utolso = 11;
+        while (!foglalt[utolso]) {
+            utolso--;
+        }
+        return utolso + 1;
+    }*/
 
     public get TavozasOra(): string {
         let talaltOra = 0;

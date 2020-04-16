@@ -1,6 +1,5 @@
 export default class Fogadas {
-    private _vezeteknev: string;
-    private _utonev: string;
+    private _teljesNev: string;
     private _lefoglaltIdo: string;
     private _rogzitesIdo: string;
     private _etap: number;
@@ -8,14 +7,6 @@ export default class Fogadas {
     private _perc: number;
     private _honap: number;
     private _nap: number;
-
-    public get vezeteknev(): string {
-        return this._vezeteknev;
-    }
-
-    public get utonev(): string {
-        return this._utonev;
-    }
 
     public get lefoglaltIdo(): string {
         return this._lefoglaltIdo;
@@ -34,7 +25,7 @@ export default class Fogadas {
     }
 
     public get teljesNev(): string {
-        return this._vezeteknev + " " + this._utonev;
+        return this._teljesNev;
     }
 
     public get etap(): number {
@@ -63,8 +54,7 @@ export default class Fogadas {
 
     constructor(sor: string) {
         const m: string[] = sor.split(" ");
-        this._vezeteknev = m[0];
-        this._utonev = m[1];
+        this._teljesNev = m[0] + " " + m[1];
         this._lefoglaltIdo = m[2];
         this._rogzitesIdo = m[3];
         const seged = m[3].split("-")[1];
