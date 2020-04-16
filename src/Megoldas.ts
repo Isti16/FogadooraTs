@@ -24,11 +24,6 @@ export default class Megoldás {
         return szam;
     }
 
-    /*public foglaltTanarok(idopont: string): string[] {
-        const tanarok: string[] = [""];
-        this._fogadasok.forEach(e => (e.lefoglaltIdo === idopont ? tanarok.push(e.teljesNev + "\n") : ""));
-        return tanarok.sort();
-    }*/
     public foglaltTanarok(idopont: string): string {
         const tanarok: string[] = [];
         let seged = "";
@@ -48,28 +43,6 @@ export default class Megoldás {
         fs.writeFileSync(fajlnev, tartalom.join(""));
     }
 
-    /*public legkorabbiTanar(): string {
-        const talaltNev = "";
-        const segedev = new Date(2020, 12, 12);
-        for (let i = 1; i < this._fogadasok.length; i++) {
-            if (this._fogadasok[i].rogzitesNapja <= segedev) {
-            }
-        }
-        return talaltNev;
-    }*/
-
-    /*public get legkorabbiTanar(): string {
-        let elso: Fogadas = this._fogadasok[0];
-        //this._fogadasok.forEach(e => (e.etap < elso ? (elso = e.etap) : ""));
-        //const nev = elso.teljesNev.toString();
-        for (let i = 1; i < this._fogadasok.length; i++) {
-            if (this._fogadasok[i].etap < elso.etap) {
-                elso = this._fogadasok[i];
-            }
-        }
-        return elso.teljesNev;
-    }*/
-
     public get legkorabbiTanar(): string[] {
         let keresettHonap = this._fogadasok[0].honap;
         let keresettNap = this._fogadasok[0].nap;
@@ -88,7 +61,6 @@ export default class Megoldás {
         }
         tarolo.push(keresettNev, foglaltIdopont, foglalasIdeje);
         return tarolo;
-        //return keresettNev + "\n" + "Foglalt időpont: " + foglaltIdopont + "\n" + "Foglalás ideje: " + foglalasIdeje;
     }
 
     public Idostring(intervallumId: number): string {
@@ -97,21 +69,6 @@ export default class Megoldás {
         return ora.toString() + ":" + perc.toString();
     }
 
-    /*public get Szabadsavok(): string {
-        const foglalt = Array<boolean>(12);
-        let szoveg = "";
-        for (let i = 1; i < 12; i++) {
-            foglalt[i] = false;
-        }
-        this._fogadasok.forEach(e => (e.teljesNev == "Barna Eszter" ? foglalt[e.etap] == true : ""));
-        for (let i = 1; i < 12; i++) {
-            if (foglalt[i] == false) {
-                szoveg += this._fogadasok[i].lefoglaltIdo.toString() + "\n";
-            }
-        }
-
-        return szoveg;
-    }*/
     public get Szabadsavok(): string {
         const seged: string[] = ["16:00", "16:10", "16:20", "16:30", "16:40", "16:50", "17:00", "17:10", "17:20", "17:30", "17:40", "17:50"];
         let szoveg = "";
