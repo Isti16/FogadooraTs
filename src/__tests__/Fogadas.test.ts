@@ -1,9 +1,9 @@
 import Fogadas from "../Fogadas";
 
-describe("Fizetés osztály unit tesztjei", () => {
+describe("Fogadás osztály unit tesztjei", () => {
     const instance: Fogadas = new Fogadas("Csorba Ede 16:30 2017.10.28-18:48");
 
-    it("Fizetes osztály típusa", async () => {
+    it("Fogadás osztály típusa", async () => {
         expect(instance).toBeInstanceOf(Fogadas);
     });
 
