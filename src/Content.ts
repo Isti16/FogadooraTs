@@ -85,7 +85,7 @@ export default class Content {
         res.write(`${megold.Szabadsavok}`);
         res.write(`Barna Eszter legkorábban távozhat: ${megold.TavozasOra}\n`);
 
-        res.write("\nGithub repository link: <a href='https://github.com/Isti16/FogadooraTs.git'>https://github.com/Isti16/FogadooraTs</a>\n\n");
+        res.write("\n<a href='https://github.com/Isti16/FogadooraTs.git'>Github repository</a>\n\n");
 
         res.write(bekertIdopont.replace(":", "").toString() + ".txt kiírása:\n\n");
 
