@@ -56,7 +56,13 @@ export default class Megoldás {
     }
 
     public get Szabadsavok(): string {
-        const seged: string[] = ["16:00", "16:10", "16:20", "16:30", "16:40", "16:50", "17:00", "17:10", "17:20", "17:30", "17:40", "17:50"];
+        const seged: string[] = [];
+        for (let i = 0; i < this._fogadasok.length; i++) {
+            if (!seged.includes(this._fogadasok[i].lefoglaltIdo)) {
+                seged.push(this._fogadasok[i].lefoglaltIdo);
+            }
+        }
+        seged.sort();
         let szoveg = "";
         for (let i = 1; i < this._fogadasok.length; i++) {
             for (let j = 1; j < seged.length; j++) {
@@ -71,34 +77,6 @@ export default class Megoldás {
 
         return szoveg;
     }
-
-    /*public get Szabadsavokk(): string {
-        const foglalt: boolean[] = [];
-        let seged = "";
-        for (let i = 0; i < 12; i++) {
-            foglalt[i] = false;
-        }
-        this._fogadasok.forEach(e => (e.teljesNev == "Barna Eszter" ? (foglalt[e.etap] = true) : ""));
-        for (let i = 0; i < 12; i++) {
-            if (!foglalt[i]) {
-                seged += this.Idostring(i) + "\n";
-            }
-        }
-        return seged;
-    }
-
-    public get Tavozas(): number {
-        const foglalt: boolean[] = [];
-        for (let i = 0; i < 12; i++) {
-            foglalt[i] = false;
-        }
-        this._fogadasok.forEach(e => (e.teljesNev == "Barna Eszter" ? (foglalt[e.etap] = true) : ""));
-        let utolso = 11;
-        while (!foglalt[utolso]) {
-            utolso--;
-        }
-        return utolso + 1;
-    }*/
 
     public get TavozasOra(): string {
         let talaltOra = 0;
