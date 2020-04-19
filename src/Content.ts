@@ -2,7 +2,7 @@
 import http from "http";
 import url from "url";
 import Megoldas from "./Megoldas";
-import { isUndefined, isNull } from "util";
+import { isUndefined } from "util";
 
 interface InputInterface {
     name: string;
@@ -43,15 +43,15 @@ export default class Content {
         //akkor „A megadott néven nincs időpontfoglalás.” üzenetet jelenítse meg!
         const u = url.parse(req.url as string, true).query;
         let bekertTanarNev: string = u.bekertnev as string;
-        if (isUndefined(bekertTanarNev) || isNull(bekertTanarNev) || bekertTanarNev === "") {
+        if (isUndefined(bekertTanarNev) || bekertTanarNev === "") {
             bekertTanarNev = "Nagy Ferenc";
         }
         res.write("3. feladat\n");
-        res.write(`Adjon meg egy nevet: <input type='text' name='bekertnev' value=${bekertTanarNev} style='width: 12em' onChange='this.form.submit();' >\n`);
-        if (megold.idopontSzam(bekertTanarNev) == 0) {
+        res.write(`Adjon meg egy nevet: <input type='text' name='bekertnev' value='${bekertTanarNev.trim()}' style='width: 12em' onChange='this.form.submit();' >\n`);
+        if (megold.idopontSzam(bekertTanarNev.trim()) == 0) {
             res.write(`${bekertTanarNev} néven nincs időpont.\n\n`);
         } else {
-            res.write(`${bekertTanarNev} néven ${megold.idopontSzam(bekertTanarNev)} időpontfoglalás van.\n\n`);
+            res.write(`${bekertTanarNev.trim()} néven ${megold.idopontSzam(bekertTanarNev.trim())} időpontfoglalás van.\n\n`);
         }
 
         //4. Kérjen be a felhasználótól egy érvényes időpontot a forrásfájlban található formátumban (pl. 17:40)!
@@ -65,9 +65,9 @@ export default class Content {
         if (isUndefined(bekertIdopont) || bekertIdopont === "") {
             bekertIdopont = "17:40";
         }
-        res.write(`Adjon meg egy érvényes időpontot (pl. 17:10): <input type='text' name='beker_idopont' value=${bekertIdopont} style='width: 3em' onChange='this.form.submit();' >\n\n`);
+        res.write(`Adjon meg egy érvényes időpontot (pl. 17:10): <input type='text' name='beker_idopont' value=${bekertIdopont.trim()} style='width: 3em' onChange='this.form.submit();' >\n\n`);
         res.write(`${megold.foglaltTanarok(bekertIdopont.trim())}`);
-        megold.allomanybaIr(bekertIdopont.replace(":", "").toString() + ".txt", megold.irasSeged(bekertIdopont));
+        megold.allomanybaIr(bekertIdopont.replace(":", "").toString() + ".txt", megold.irasSeged(bekertIdopont.trim()));
         //5. Határozza meg, majd írja ki a képernyőre a legkorábban lefoglalt időpont minden adatát!
         //Az adatok megjelenítésénél pontosan kövesse a feladat végén szereplő mintát!
 
