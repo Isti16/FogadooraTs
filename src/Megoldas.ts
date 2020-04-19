@@ -81,20 +81,20 @@ export default class Megoldás {
     public get TavozasOra(): string {
         let talaltOra = 0;
         let szam = 0;
-        let seged = 0;
-        let masikseged = 0;
+        let oraSeged = 0;
+        let percSeged = 0;
         for (let i = 1; i < this._fogadasok.length; i++) {
-            if (this._fogadasok[i].teljesNev == "Barna Eszter" && (parseInt(this._fogadasok[i].lefoglaltIdo.split(":")[0]) > seged || parseInt(this._fogadasok[i].lefoglaltIdo.split(":")[1]) > masikseged)) {
+            if (this._fogadasok[i].teljesNev == "Barna Eszter" && (this._fogadasok[i].lefoglaltOra > oraSeged || this._fogadasok[i].lefoglaltPerc > percSeged)) {
                 szam = i;
-                seged = parseInt(this._fogadasok[i].lefoglaltIdo.split(":")[0]);
-                masikseged = parseInt(this._fogadasok[i].lefoglaltIdo.split(":")[1]);
+                oraSeged = this._fogadasok[i].lefoglaltOra;
+                percSeged = this._fogadasok[i].lefoglaltPerc;
             }
         }
-        if (this._fogadasok[szam].lefoglaltIdo.split(":")[1]) {
-            talaltOra = parseInt(this._fogadasok[szam].lefoglaltIdo.split(":")[1]) + 10;
-            return this._fogadasok[szam].lefoglaltIdo.split(":")[0] + ":" + talaltOra.toString();
+        if (this._fogadasok[szam].lefoglaltPerc) {
+            talaltOra = this._fogadasok[szam].lefoglaltPerc + 10;
+            return this._fogadasok[szam].lefoglaltOra + ":" + talaltOra.toString();
         } else {
-            talaltOra = parseInt(this._fogadasok[szam].lefoglaltIdo.split(":")[0]) + 1;
+            talaltOra = this._fogadasok[szam].lefoglaltOra + 1;
             return talaltOra + ":00";
         }
     }
