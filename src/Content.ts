@@ -49,7 +49,7 @@ export default class Content {
         res.write("3. feladat\n");
         res.write(`Adjon meg egy nevet: <input type='text' name='bekertnev' value='${bekertTanarNev.trim()}' style='width: 12em' onChange='this.form.submit();' >\n`);
         if (megold.idopontSzam(bekertTanarNev.trim()) == 0) {
-            res.write(`${bekertTanarNev} néven nincs időpont.\n\n`);
+            res.write(`${bekertTanarNev.trim()} néven nincs időpont.\n\n`);
         } else {
             res.write(`${bekertTanarNev.trim()} néven ${megold.idopontSzam(bekertTanarNev.trim())} időpontfoglalás van.\n\n`);
         }
