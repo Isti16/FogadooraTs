@@ -24,32 +24,16 @@ export default class Fogadas {
         return this._rogzitesIdo;
     }
 
-    public get rogzitesNapja(): string {
-        return this._rogzitesIdo.split("-")[0].replace(".", "-");
-    }
-
-    public get rogzitesIdeje(): string {
-        return this._rogzitesIdo.split("-")[1];
-    }
-
     public get teljesNev(): string {
         return this._teljesNev;
     }
 
     public get etap(): number {
-        return this.intervallumId(this.ora, this.perc);
+        return this.intervallumId(this._ora, this._perc);
     }
 
     public intervallumId(ora: number, perc: number): number {
         return (ora * 60 + perc - 16 * 60) / 10;
-    }
-
-    public get ora(): number {
-        return this._ora;
-    }
-
-    public get perc(): number {
-        return this._perc;
     }
 
     constructor(sor: string) {
