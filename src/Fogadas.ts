@@ -33,7 +33,7 @@ export default class Fogadas {
     }
 
     public intervallumId(ora: number, perc: number): number {
-        return (ora * 60 + perc - 16 * 60) / 10;
+        return ora * 60 + perc;
     }
 
     constructor(sor: string) {
