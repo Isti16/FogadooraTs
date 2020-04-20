@@ -49,12 +49,6 @@ export default class Megoldás {
         return this._fogadasok[0];
     }
 
-    public Idostring(intervallumId: number): string {
-        const ora = (16 * 60 + intervallumId * 10) / 60;
-        const perc = (16 * 60 + intervallumId * 10) % 60;
-        return ora.toFixed(0).toString() + ":" + perc.toString();
-    }
-
     public get Szabadsavok(): string {
         const seged: string[] = [];
         for (let i = 0; i < this._fogadasok.length; i++) {
