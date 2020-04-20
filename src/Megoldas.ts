@@ -45,8 +45,9 @@ export default class Megoldás {
 
     public Legelso(): Fogadas {
         let elso = this._fogadasok[0];
-        this._fogadasok.forEach(e => (elso.etap > e.etap ? (elso = e) : ""));
-        return this._fogadasok[0];
+        const elsoRogzites = this._fogadasok[0].rogzitesIdo;
+        this._fogadasok.forEach(e => (elso.etap < e.etap && e.rogzitesIdo == elsoRogzites ? (elso = e) : ""));
+        return elso;
     }
 
     public get Szabadsavok(): string {
