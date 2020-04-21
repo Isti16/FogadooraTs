@@ -85,7 +85,7 @@ export default class Megoldás {
                 percSeged = this._fogadasok[i].lefoglaltPerc;
             }
         }
-        if (this._fogadasok[szam].lefoglaltPerc) {
+        if (this._fogadasok[szam].lefoglaltPerc != 50) {
             talaltOra = this._fogadasok[szam].lefoglaltPerc + 10;
             return this._fogadasok[szam].lefoglaltOra + ":" + talaltOra.toString();
         } else {

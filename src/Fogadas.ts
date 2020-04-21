@@ -4,7 +4,6 @@ export default class Fogadas {
     private _lefoglaltOra: number;
     private _lefoglaltPerc: number;
     private _rogzitesIdo: string;
-    private _etap: number;
     private _ora: number;
     private _perc: number;
 
@@ -46,6 +45,5 @@ export default class Fogadas {
         const seged = m[3].split("-")[1];
         this._ora = parseInt(seged.split(":")[0]);
         this._perc = parseInt(seged.split(":")[1]);
-        this._etap = this.intervallumId(this._ora, this._perc);
     }
 }
